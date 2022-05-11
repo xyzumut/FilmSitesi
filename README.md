@@ -60,12 +60,15 @@ Bu **Film Sitesi** projesi **NEOS Yazılımın** yazılım bootcamp'i sonrası a
 
 ###  :email: İletişim
 #### Umut Gedik
+* Github : [xyzumut](https://github.com/xyzumut)
 * LinkedIn: [Umut Gedik ](https://www.linkedin.com/in/umut-gedik/)
 * E-Mail Adresi: [xyzumut06@gmail.com](xyzumut06@gmail.com)
 #### Melodi Bayraktar
+* Github : [MelodiBayraktar](https://github.com/MelodiBayraktar)
 * LinkedIn: [Melodi Bayraktar ](https://www.linkedin.com/in/melodibayraktar/)
 * E-Mail Adresi: [melodi_bayraktar@hotmail.com](melodi_bayraktar@hotmail.com)
 #### Selenga Yavuz
+* Github : [selenYvz](https://github.com/selenYvz)
 * LinkedIn: [Selenga Yavuz ](https://www.linkedin.com/in/selenga-sarpkaya-218aab239/)
 * E-Mail Adresi: [selengasarpkaya80@gmail.com](selengasarpkaya80@gmail.com)
 
