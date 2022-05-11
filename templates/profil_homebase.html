@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Fontawesome ikonları-->
+        <script src="https://kit.fontawesome.com/eb96f16093.js" crossorigin="anonymous"></script>
+        <!--AOS KÜTÜPHANESİ-->
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <!--BOOTSTRAP CSS-->
+        <link href="{% static '/Bootstrap/bootstrap.min.css' %}" rel="stylesheet">
+        <!--Jquery minjs-->
+        <script src="{% static '/Bootstrap/bootstrap.min.js' %}"></script>
+        
+        <!--Google Fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Comforter+Brush&family=Oswald:wght@300&family=Poppins&family=Readex+Pro&family=Roboto&display=swap" rel="stylesheet">
+        <!--CSS -->
+        
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        {% block head %}{% endblock head %}
+    </head>
+    <body>
+       
+        {% block icerik %}{% endblock icerik %}
+        
+       
+        <script src="{% static '/javaScript/script.js' %}"></script>
+
+    </body>
+</html>

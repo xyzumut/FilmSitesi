@@ -1,0 +1,24 @@
+{% extends "homebase.html" %}
+{% load static %}
+
+
+
+{% block head %}
+<title>Üye Girişi</title>
+{% endblock head %}
+
+
+{% block icerik %}
+<form method="post" id="giris-form">
+  {% csrf_token %}
+  <h4>ÜYE GİRİŞİ</h4>
+  {% if hata %}
+    <div class="alert alert-danger" role="alert">
+      {{hata}}
+    </div>
+  {% endif %}
+  {{form}}
+  <button type="submit">GİRİŞ YAP</button>
+</form>
+<hr>
+{% endblock icerik %}

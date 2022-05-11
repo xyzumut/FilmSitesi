@@ -1,0 +1,90 @@
+{% extends "profil_homebase.html" %}
+{% load static %}
+
+
+{% block head %}
+<title>{{request.user.username}}</title>
+{% endblock head %}
+
+{% block icerik %}
+  <a href="{% url 'anasayfa' %}" id="profil-anasayfa" class="btn btn-primary bg-primary ">Ana Sayfaya Dön</a>
+  <section class="account-container ">
+      <section class="account-page">
+          <div class="membership">
+              <div class="account-title border-bottom border-primary"> <h3 class="mb-3 account-info ">Üyelik Bilgilerim</h3></div>
+              <h5 class="membership-name my-4"> Kullanıcı Adı : {{uye.username}}</h5>
+              <h5 class="membership-email mb-3"> E-mail Adresi : {{uye.email}}</h5>
+          </div>
+          <div class="membership-info-password ">
+              <div class="accordion  " id="accordionExample">
+                <div class="accordion-item  ">
+                  <h2 class="accordion-header bg-light" id="headingOne">
+                    <button class="accordion-button password-button bg-light " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      <span class="password-span">Şifre Güncelle</span>
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse bg-dark " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body ">
+                      <form class="membership-form" action="{% url 'password_change' %}" method="post">
+                        {% csrf_token%}
+                        <input class="membership-new-password" type="password" name="yeniSifre" placeholder="Yeni Şifrenizi Giriniz:" minlength="8" onkeypress=" return event.charCode != 32">
+                        <button type="submit" class="new-password-button btn btn-outline-light">Güncelle</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </section>
+      <section class="np">
+        <section class="page-title">
+          <h3 class="mt-2 title-page">Abonelik Tipi</h3>
+          {% if uyelik.uyelikTipi == 'Deneme Sürümü' %}
+            <div class="card aktif">
+                  <h5 class="card-title">Deneme Üyeliği</h5>
+                  <p class="card-text">15 Günlük Deneme Sürümü $3</p>
+                  <button  class="btn btn-outline-light" disabled>Üyeliği Güncelle!</button>
+              </div>
+              <div class="card">
+                  <h5 class="card-title">Standart Üyelik</h5>
+                  <p class="card-text">1 Aylık Standart Üyelik 15$ </p>
+                  <button href="#" class=" card-buton btn btn-outline-light">Üyeliği Güncelle!</button>
+              </div>
+          {% else %}
+          <div class="card ">
+            <h5 class="card-title">Deneme Üyeliği</h5>
+            <p class="card-text">15 Günlük Deneme Sürümü $3</p>
+            <button  class="btn btn-outline-light" disabled>Üyeliği Güncelle!</button>
+        </div>
+        <div class="card aktif">
+            <h5 class="card-title">Standart Üyelik</h5>
+            <p class="card-text">1 Aylık Standart Üyelik 15$ </p>
+            <button href="#" class=" card-buton btn btn-outline-light">Üyeliği Güncelle!</button>
+        </div>
+          {% endif %} 
+        </section>
+        <section class="yorum-container">
+          <h1 style="text-align: center;">Yapılan Yorumlar</h1>
+          {% for yorum in yorumlar %}
+          <div class="yorum_">
+            <div class="yorum-baslik">
+              <form action="." method="post">
+                {% csrf_token %}
+                <button type="submit" class="sil">X</button>
+                <input type="text" value="{{yorum.id}}" name='silinecekYorum' style="display: none;">
+              </form>
+              <h3><a href="/umosTV/film_detay/{{yorum.film.filmSlug}}" target="_blank">{{yorum.film.filmAdi}}</a></h3>
+            </div>
+            <p>{{yorum.yorum}}</p>
+          </div>
+          {% endfor %}
+        </section>
+      </section>
+  </section>
+  {% if alert %}
+    <script>
+      alert('{{alert}}')
+    </script>
+  {% endif %}
+{% endblock icerik %}
+ 

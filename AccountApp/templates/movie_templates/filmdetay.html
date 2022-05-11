@@ -1,0 +1,64 @@
+{% extends "homebase.html" %}
+{% load static %}
+
+{% block head %}
+    <title>Film Detay</title>
+{% endblock head %}
+
+{% block icerik %}
+      <div class="film-container">
+        <h3>{{film.filmAdi}}</h3>
+        <video  controls >
+          <source src="{{ film.film.url }}" type="video/mp4">
+        </video> 
+        <hr>
+        <div class="film-bilgi-header">
+          <h4>Film Bilgi</h4>
+          <div class="buttons">
+            {% for i in kategoriler %}
+              <a class="btn btn-primary" href="/umosTV/ara/{{i.kategori}}">
+                {{i}} <i class="badge fas fa-star  "></i>
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="film-bilgi">
+         <img src="{{film.filmPoster.url}}" alt="filmfragman">
+         <p>{{film.filmKonusu}}</p>
+        </div>
+        <div class="film-bilgi-footer">
+          <p><i class="fas fa-video"></i>Yönetmen : Lorem ipsum</p>
+          <p><i class="fas fa-calendar-check"></i> Yapım Yılı : <a href="/umosTV/ara/{{film.yapimYili.year}}" style="text-decoration: none;">{{film.yapimYili.year}}</a> </p>
+          <p><i class="fas fa-globe"></i>{{film.ulke}}</p>
+        </div><hr>
+      </div>
+      <!--Yorum Kısmı -->
+      <div class="yorum-genel">
+        <form method="post" class="yorumlarForm" action="">
+          {% csrf_token %}
+          <h4 class="yorumbaslik">Yorumlar</h4>
+          <!-- <input type="text" class="yorum-input" placeholder="Adınızı Giriniz:"> -->
+          <textarea class="yorum-mesaj" maxlength="500" name="yorum"></textarea>
+          <button type="submit" class=" yorum-buton btn btn-outline-primary">Yorumu Gönder!</button>
+        </form>
+        <hr>
+      </div>
+      <h1 id="yorumlar">Yorumlar</h1>
+      <div class="yorumlar">
+        {% for yorum in yorumlar %}
+          <div class="yorum">
+            <div class="yorum-icerik">
+              <i class="fas fa-user-alt fa-2x"></i>
+              <h4 class="yorum-kisi">{{yorum.kullanici.username}}</h4>
+              <p class="yorum-date">12.04.2022</p>
+            </div>
+            <div class="comment-div">
+              <p class="comment">{{yorum.yorum}}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <br>
+      <hr>
+{% endblock icerik %}
+ 

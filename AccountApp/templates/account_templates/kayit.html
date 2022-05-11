@@ -1,0 +1,36 @@
+{% extends "homebase.html" %}
+{% load static %}
+
+
+{% block head %}
+<title>Kayıt Ol</title>
+{% endblock head %}
+<body>
+    
+{% block icerik %}
+  
+  <form id="kayit-form" method='post'>
+    {% csrf_token %}
+      <h4>ÜYE OL</h4>
+      {% if hata %}
+        <div class="alert alert-danger" role="alert">
+          {{hata}}
+        </div>
+      {% endif %}
+      {% if username %} 
+        <!-- Eğer bir kayıt olma denemesi olduda bir hata aldıysa kullanıcı , girilen kullanıcı adı ve email inputlarda dursun -->
+        <input type="text" placeholder="Kullanıcı Adı: " name="_username" value={{username}}  maxlength="12">
+        <input type="email" placeholder="Emailinizi Giriniz: " name="_email" value={{email}} >
+      {% else %}
+        <!-- Daha bir kayıt olma işlemi gerçekleşmedi -->
+        <input type="text" placeholder="Kullanıcı Adı: " name="_username">
+        <input type="email" placeholder="Emailinizi Giriniz: " name="_email">
+      {% endif %}
+      <input type="password" placeholder="Parola: " name="_password">
+      <input type="password" placeholder="Parola Tekrar : " name="_password2">
+      {{form}}
+      <button type="submit">Kayıt Ol</button>
+  </form>
+  <hr>
+{% endblock icerik %}
+    

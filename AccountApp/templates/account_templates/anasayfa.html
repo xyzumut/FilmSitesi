@@ -1,0 +1,26 @@
+{% extends "account_homebase.html" %}
+{% load static %}
+
+
+{% block head %}
+    <title>Welcome</title>
+{% endblock head %}
+{% block icerik %}
+
+<div id="home-container">
+    <img src="{% static 'img/AnaSayfaPosterler/poster1.jpg' %}" alt="" id="ana_sayfa_arkaPlan">
+    <div class="anasayfa_aciklama">
+        <h2>UmosTV</h2>
+        <h3>Güncel Filmler için Dijital Plaform</h3>
+        <p>15 Günlük Deneme Sadece 3$</p>
+        <div class="uyelik ana_sayfa_uyelik">
+            <a class="uyeol btn btn-outline-primary" href="{% url 'register' %}" target="_blank">  <i class="fas fa-user-plus"></i> ÜYE OL
+            </a>
+            <a class="giris btn btn-outline-primary" href="{% url 'sign_in' %}"> <i class="fas fa-user-check"></i> ÜYE GİRİŞİ
+            </a>
+            <!-- <a class="cikis btn btn-outline-primary"> <i class="fas fa-user-minus"></i> ÜYE ÇIKIŞI -->
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock icerik %}

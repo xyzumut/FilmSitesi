@@ -1,0 +1,39 @@
+{% load static %}
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-dark   ">
+  <div> 
+    <img src="{% static 'img/icon.png' %}" alt="icon" class="icon ">
+    {% if request.user.is_authenticated %}
+      <a class="navbar-brand title filmizle btn btn-outline-primary " href='{% url "anasayfa" %}' target="">FİLM İZLE</a>
+    {% else %}
+      <a class="navbar-brand title filmizle btn btn-outline-primary" href=" {% url 'welcome' %}" target="">FİLM İZLE</a>
+    {% endif %}
+  </div> 
+  <div id="menu">
+    <form class="d-flex" method="POST" action="{% url 'ara2' %}">
+      {% csrf_token %}
+      <input class="form-control me-2" type="search" placeholder="Film Arayın" aria-label="Search" name="arananKelime">
+      <button class="btn btn-outline-primary" type="submit"> <i class="fas fa-search" ></i> Search</button>
+    </form>
+    <div class="uyelik">
+      {% if request.user.is_authenticated %}
+        <a class="profile uyeol btn btn-outline-primary" > <i class="fas fa-user"></i>  {{request.user.username}}</a>
+        <a class="giris btn btn-outline-primary " href="{% url 'sign_out'  %}"> <i class="fas fa-user-minus"></i> ÜYE ÇIKIŞI</a>
+        <div id="profil_menu" >
+          <a href="/profil/{{request.user.username}}" class="profil">Profili Görüntüle</a>
+          <a href="{% url 'sign_out'  %}" class="uyelik_tipi">Çıkış Yap</a>
+          {% if request.user.is_staff %}
+          <a href="/moderator/" class="moderator">Moderatör Sayfası</a>
+          {% endif %}
+        </div>
+      {% else %}
+        <a class="uyeol btn btn-outline-primary" href="{% url 'register' %}" target="_blank">  <i class="fas fa-user-plus"></i> ÜYE OL</a>
+        <a class="giris btn btn-outline-primary" href="{% url 'sign_in' %}"> <i class="fas fa-user-check"></i> ÜYE GİRİŞİ</a>
+      {% endif %}
+        
+    </div>
+  </div>
+    <!-- responsive -->
+  <i class="fas fa-bars text-primary fa-4x" id="hamburger"></i>
+</nav>
